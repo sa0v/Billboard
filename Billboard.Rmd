@@ -81,4 +81,4 @@ There appears to have been a tie for the most popular song of 2000, with **Every
   scale_fill_colorblind()
 ```
 
-**Jay-Z** was the most popular artist of the year 2000, with **5** songs charting on the top 100 alone.
+**Jay-Z** was the most popular artist of the year 2000, with 5 songs charting on the top 100 alone.
