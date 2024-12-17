@@ -40,7 +40,7 @@ This notebook analyzes the **billboard** data set, which records the performance
     # This makes it easier to see the relationship between ranking and time on
     # the charts.
     scale_y_reverse() +
-    labs(x="Weeks",y="Ranking",title="Weeks on the Top 100 vs. Ranking Achieved")
+    labs(x="Weeks",y="Rank",title="Weeks on the Top 100 vs. Rank")
 ```
 
 It is clear from the above plot that **very** few songs remain in the top 100 for more than a period of 20 weeks.
