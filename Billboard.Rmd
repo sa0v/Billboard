@@ -65,7 +65,7 @@ It is clear from the above plot that **very** few songs remain in the top 100 fo
 
 There appears to have been a tie for the most popular song of 2000, with **Everything You Want** by **Vertical Horizon** and **Breathe** by **Faith Hill** having spent equal amounts of time in the top 10.
 
-## Which artists had the most songs on the top 100?
+## Which artists had the most songs chart on the top 100?
 
 ```{r}
   billboard_tidy |>
