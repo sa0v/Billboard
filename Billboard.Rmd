@@ -1,0 +1,84 @@
+---
+title: "Billboard"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r}
+  library(tidyverse)
+  library(billboard)
+  library(ggthemes)
+```
+
+```{r}
+  # Perform some tidying on the data before analysis.
+  billboard_tidy <- billboard |>
+    pivot_longer(
+      cols = starts_with("wk"),
+      names_to="week",
+      values_to="rank",
+      values_drop_na = TRUE,
+    ) |>
+    mutate(week=parse_number(week))
+```
+
+## Introduction
+
+This notebook analyzes the **billboard** data set, which records the performance of songs on the top 100 charts for the year 2000.
+
+## How long does a track typically remain in the top 100?
+
+```{r}
+  # Plot the time a song remained on the top 100 billboard in weeks, versus the
+  # rank that the song achieved. This will give a good impression of how long that
+  # a song remains on the top 100 in general.
+  billboard_tidy |>
+    ggplot(aes(x=week,y=rank,group=track)) +
+    geom_line() +
+    # Flip the scale of the y axis so that the rank is from highest to lowest.
+    # This makes it easier to see the relationship between ranking and time on
+    # the charts.
+    scale_y_reverse() +
+    labs(x="Weeks",y="Ranking",title="Weeks on the Top 100 vs. Ranking Achieved")
+```
+
+It is clear from the above plot that **very** few songs remain in the top 100 for more than a period of 20 weeks.
+
+## What ten songs remained in the top ten for the longest number of weeks?
+
+```{r}
+  billboard_tidy |>
+  filter(rank <= 10) |>
+  group_by(track) |>
+  summarize(weeks_in_top10=n()) |>
+  arrange(desc(weeks_in_top10)) |>
+  slice_head(n=10) |>
+  ggplot(aes(y=reorder(track,weeks_in_top10),x=weeks_in_top10,color="Weeks",fill="Weeks")) +
+  geom_col() +
+  labs(x="Weeks in Top 10", y="Track Name") +
+  scale_color_colorblind() +
+  scale_fill_colorblind() +
+  theme(legend.position="none")
+```
+
+There appears to have been a tie for the most popular song of 2000, with **Everything You Want** and **Breathe** having spent equal amounts of time in the top 10.
+
+## Which ten artists had the most songs on the top 100?
+
+```{r}
+  billboard_tidy |>
+  distinct(track, .keep_all=TRUE) |>
+  group_by(artist) |>
+  summarize(count=n()) |>
+  arrange(desc(count)) |>
+  slice_head(n=10) |>
+  ggplot(aes(y=reorder(artist,count),x=count,color="Count",fill="Count")) +
+  geom_col() +
+  labs(x="Songs in Top 100",y="Artist",title="Artists with Songs in the Top 100") +
+  theme(legend.position="none") +
+  scale_color_colorblind() +
+  scale_fill_colorblind()
+```
+
+**Jay-Z** was the most popular artist of the year 2000, with **5** songs charting on the top 100 alone.
