@@ -82,4 +82,4 @@ There appears to have been a tie for the most popular song of 2000, with **Every
   scale_fill_colorblind()
 ```
 
-**Jay-Z** was the most popular artist of the year 2000, with 5 songs charting on the top 100 alone. It also illustrates the popularity of **Destiny's Child** in the early 2000's. The group had **3** songs chart in the top 100 in the year 2000, with two of those songs spending over **15 weeks** in the top 10 rankings.
+**Jay-Z** was the most popular artist of the year 2000, with 5 songs charting on the top 100 alone. **Destiny's Child** also performed quite well when the first and second plots are both taken into consideration; the group had 3 songs chart in the top 100, with two of those songs spending longer than 15 weeks in the top 10.
