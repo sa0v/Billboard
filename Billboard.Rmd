@@ -45,7 +45,7 @@ This notebook analyzes the **billboard** data set, which records the performance
 
 It is clear from the above plot that **very** few songs remain in the top 100 for more than a period of 20 weeks.
 
-## What ten songs remained in the top ten for the longest number of weeks?
+## Which songs remained in the top ten for the longest number of weeks?
 
 ```{r}
   billboard_tidy |>
@@ -64,7 +64,7 @@ It is clear from the above plot that **very** few songs remain in the top 100 fo
 
 There appears to have been a tie for the most popular song of 2000, with "Everything You Want" and "Breathe" having spent equal amounts of time in the top 10.
 
-## Which ten artists had the most songs on the top 100?
+## Which artists had the most songs on the top 100?
 
 ```{r}
   billboard_tidy |>
