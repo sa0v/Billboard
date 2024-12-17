@@ -49,20 +49,21 @@ It is clear from the above plot that **very** few songs remain in the top 100 fo
 
 ```{r}
   billboard_tidy |>
+  unite(artist_and_track, c('artist','track'),sep = " - ") |>
   filter(rank <= 10) |>
-  group_by(track) |>
+  group_by(artist_and_track) |>
   summarize(weeks_in_top10=n()) |>
   arrange(desc(weeks_in_top10)) |>
   slice_head(n=10) |>
-  ggplot(aes(y=reorder(track,weeks_in_top10),x=weeks_in_top10,color="Weeks",fill="Weeks")) +
+  ggplot(aes(y=reorder(artist_and_track,weeks_in_top10),x=weeks_in_top10,color="Weeks",fill="Weeks")) +
   geom_col() +
-  labs(x="Weeks in Top 10", y="Track Name") +
+  labs(x="Weeks in Top 10", y="Artist and Song Name",title="Weeks Spent by Song in Top 10") +
   scale_color_colorblind() +
   scale_fill_colorblind() +
   theme(legend.position="none")
 ```
 
-There appears to have been a tie for the most popular song of 2000, with "Everything You Want" and "Breathe" having spent equal amounts of time in the top 10.
+There appears to have been a tie for the most popular song of 2000, with **Everything You Want** by Vertical Horizon and **Breathe** by Faith Hill having spent equal amounts of time in the top 10.
 
 ## Which artists had the most songs on the top 100?
 
@@ -81,4 +82,4 @@ There appears to have been a tie for the most popular song of 2000, with "Everyt
   scale_fill_colorblind()
 ```
 
-**Jay-Z** was the most popular artist of the year 2000, with 5 songs charting on the top 100 alone.
+**Jay-Z** was the most popular artist of the year 2000, with 5 songs charting on the top 100 alone. It also illustrates the popularity of **Destiny's Child** in the early 2000's. The group had **3** songs chart in the top 100 in the year 2000, with two of those songs spending over **15 weeks** in the top 10 rankings.
